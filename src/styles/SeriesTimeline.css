@@ -1,0 +1,91 @@
+/* Vertical rail and position markers. */
+.series-timeline {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 4.5rem;
+  padding-bottom: 2rem;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+/* Connector rail: from just below one node to the top of the next. Dashed the
+   way a course line is drawn on a plotter. */
+.timeline-item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: calc(1.45rem - 1px);
+  top: 3.4rem;
+  bottom: 0;
+  width: 2px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--border-strong) 0 3px,
+    transparent 3px 7px
+  );
+}
+
+/* Waypoint number, read out of a small LCD window. */
+.timeline-node {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 2.9rem;
+  height: 2.9rem;
+  border-radius: var(--r);
+  background-color: var(--lcd-bg);
+  background-image: radial-gradient(var(--lcd-dot) 1px, transparent 1.2px);
+  background-size: 4px 4px;
+  color: var(--lcd-ink);
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-shadow: var(--lcd-glow);
+  box-shadow: var(--bevel-in);
+}
+
+.timeline-item--loading .timeline-node {
+  border: 1px dashed var(--border-strong);
+  background-color: var(--surface);
+  background-image: none;
+  color: var(--text-muted);
+  text-shadow: none;
+}
+
+.timeline-item--failed .timeline-node {
+  background-color: var(--surface);
+  background-image: none;
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+  text-shadow: none;
+}
+
+@media (max-width: 640px) {
+  .timeline-item {
+    padding-left: 3.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .timeline-item:not(:last-child)::before {
+    left: calc(1.15rem - 1px);
+    top: 2.7rem;
+  }
+
+  .timeline-node {
+    width: 2.3rem;
+    height: 2.3rem;
+    font-size: 0.85rem;
+  }
+}

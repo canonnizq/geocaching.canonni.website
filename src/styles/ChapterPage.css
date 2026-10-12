@@ -1,0 +1,211 @@
+/* The generated card, mounted on the face plate. */
+.chapter-card {
+  margin: 0 0 1.75rem;
+}
+
+.chapter-card img {
+  display: block;
+  width: 100%;
+  max-width: 750px;
+  height: auto;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-floating);
+}
+
+.chapter-card figcaption {
+  margin-top: 0.7rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.chapter-card figcaption a {
+  color: var(--accent);
+}
+
+/* Chapter navigation keys. */
+.chapter-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.chapter-nav-key {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--r);
+  background: var(--surface-raised);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: var(--bevel-out);
+  transition:
+    color 0.18s ease,
+    transform 0.06s ease,
+    box-shadow 0.06s ease;
+}
+
+.chapter-nav-key:hover {
+  color: var(--accent);
+}
+
+.chapter-nav-key:active {
+  transform: translateY(3px);
+  box-shadow: inset 1px 1px 0 var(--bevel-lo);
+}
+
+.chapter-nav-key--empty {
+  border-style: dashed;
+  box-shadow: none;
+  opacity: 0.65;
+}
+
+.chapter-nav-key:focus-visible,
+.chapter-actions a:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Embed instructions: a recessed panel holding the snippet as a readout. */
+.chapter-embed {
+  margin-bottom: 2rem;
+  padding: 1.25rem 1.4rem;
+  border: 2px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface-raised);
+  box-shadow: var(--bevel-out);
+}
+
+.chapter-embed-lede {
+  margin: 0.5rem 0 1rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.chapter-snippet {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+  border-radius: var(--r);
+  background-color: var(--lcd-bg);
+  background-image: radial-gradient(var(--lcd-dot) 1px, transparent 1.2px);
+  background-size: 4px 4px;
+  color: var(--lcd-ink);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  text-align: left;
+  text-shadow: var(--lcd-glow);
+  white-space: pre-wrap;
+  word-break: break-word;
+  box-shadow: var(--bevel-in);
+}
+
+.chapter-snippet code {
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  color: inherit;
+  font-size: inherit;
+  text-shadow: inherit;
+}
+
+.chapter-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.1rem;
+}
+
+/* Cache details */
+.chapter-cache-title {
+  margin: 0.5rem 0 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  text-transform: none;
+}
+
+.chapter-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chapter-meta-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
+}
+
+.chapter-meta-value {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.chapter-description {
+  margin: 1.1rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.94rem;
+  line-height: 1.65;
+  white-space: pre-line;
+}
+
+.chapter-note {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.chapter-note a {
+  color: var(--accent);
+}
+
+.chapter-note--panel {
+  margin-top: 0.5rem;
+  padding: 0.9rem 1.05rem;
+  border: 2px solid var(--border);
+  border-radius: var(--r);
+  background: var(--surface);
+  box-shadow: var(--bevel-in);
+}
+
+.chapter-note--spaced {
+  margin-top: 2rem;
+}
+
+@media (max-width: 640px) {
+  .chapter-embed {
+    padding: 1rem 1.05rem;
+  }
+
+  .chapter-snippet {
+    font-size: 0.72rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chapter-nav-key {
+    transition: none;
+  }
+}

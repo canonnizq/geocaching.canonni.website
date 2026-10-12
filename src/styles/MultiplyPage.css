@@ -1,0 +1,485 @@
+.multiply-back {
+  margin: 1rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+}
+
+.multiply-back a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.multiply-back a:hover {
+  text-decoration: underline;
+}
+
+/* Cache code entry: a recessed well and a key to press. */
+.multiply-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 34rem;
+  margin-bottom: 2rem;
+}
+
+.multiply-form-label {
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking);
+  text-transform: uppercase;
+}
+
+.multiply-form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.multiply-form-input {
+  box-sizing: border-box;
+  flex: 1 1 12rem;
+  min-width: 0;
+  padding: 0.6rem 0.8rem;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--r);
+  background-color: var(--lcd-bg);
+  background-image: radial-gradient(var(--lcd-dot) 1px, transparent 1.2px);
+  background-size: 4px 4px;
+  color: var(--lcd-ink);
+  font: inherit;
+  font-family: var(--mono);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: var(--lcd-glow);
+  box-shadow: var(--bevel-in);
+}
+
+.multiply-form-input::placeholder {
+  color: var(--lcd-dim);
+  opacity: 0.8;
+  font-weight: 400;
+}
+
+.multiply-form-input:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.multiply-form-note {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.multiply-example {
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.multiply-example:hover {
+  text-decoration: underline;
+}
+
+/* Which cache was read */
+.multiply-cache-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.multiply-code {
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--r-sm);
+  background-color: var(--lcd-bg);
+  background-image: radial-gradient(var(--lcd-dot) 1px, transparent 1.2px);
+  background-size: 4px 4px;
+  color: var(--lcd-ink);
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-shadow: var(--lcd-glow);
+  box-shadow: var(--bevel-in);
+}
+
+.multiply-cache-name {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.multiply-cache-type {
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+
+/* Things that could not be read: a recessed note panel. */
+.notice {
+  margin: 0 0 1rem;
+  padding: 0.9rem 1.05rem;
+  border: 2px solid var(--border);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  box-shadow: var(--bevel-in);
+}
+
+.notice-text {
+  color: var(--text);
+}
+
+.notice-hint {
+  margin-top: 0.45rem;
+  font-size: 0.78rem;
+}
+
+.notice code,
+.multiply-description code {
+  padding: 0.1rem 0.3rem;
+  border-radius: var(--r-sm);
+  background-color: var(--lcd-bg);
+  background-image: radial-gradient(var(--lcd-dot) 1px, transparent 1.2px);
+  background-size: 3px 3px;
+  color: var(--lcd-ink);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  text-shadow: var(--lcd-glow);
+  box-shadow: var(--bevel-in);
+}
+
+.multiply-description {
+  margin-bottom: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.multiply-description summary {
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* The description as the unit printed it out. */
+.multiply-description p {
+  margin-top: 0.75rem;
+  padding: 0.9rem 1rem;
+  border-radius: var(--r);
+  background: var(--surface-raised);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  box-shadow: var(--bevel-in);
+}
+
+/* Steps on the left, live result alongside on wide screens. */
+.multiply-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 22rem;
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.multiply-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* One stage of the route. */
+.step {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 10rem;
+  gap: 1.1rem;
+  align-items: start;
+  padding: 1rem 1.15rem;
+  border: 2px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface-raised);
+  box-shadow: var(--bevel-out);
+  transition: border-color 0.2s ease;
+}
+
+.step:focus-within {
+  border-color: var(--border-strong);
+}
+
+.step-heading {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+}
+
+/* The variable this step supplies, e.g. "B", in its own readout window. */
+.step-id {
+  align-self: center;
+  min-width: 1.7rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--r-sm);
+  background-color: var(--lcd-bg);
+  background-image: radial-gradient(var(--lcd-dot) 1px, transparent 1.2px);
+  background-size: 4px 4px;
+  color: var(--lcd-ink);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: var(--lcd-glow);
+  box-shadow: var(--bevel-in);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+/* Nothing left to type here, so the window stops glowing. */
+.step--done .step-id {
+  background-color: var(--surface);
+  background-image: none;
+  color: var(--text-muted);
+  text-shadow: none;
+  box-shadow: var(--bevel-in);
+}
+
+.step-label {
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* Where the stage sits in the listing, e.g. "Stage 2". */
+.step-tag {
+  padding: 0.12rem 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.step-description {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.step-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.step-field-label {
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking);
+  text-transform: uppercase;
+}
+
+.step-field {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.5rem 0.65rem;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--r);
+  background-color: var(--lcd-bg);
+  background-image: radial-gradient(var(--lcd-dot) 1px, transparent 1.2px);
+  background-size: 4px 4px;
+  color: var(--lcd-ink);
+  font: inherit;
+  font-family: var(--mono);
+  font-size: 1rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-shadow: var(--lcd-glow);
+  box-shadow: var(--bevel-in);
+}
+
+.step-field::placeholder {
+  color: var(--lcd-dim);
+  opacity: 0.8;
+}
+
+.step-field:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.step-hint {
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  line-height: 1.4;
+}
+
+/* The main readout: a bezel holding the coordinate screen. */
+.multiply-result {
+  position: sticky;
+  top: 6.5rem;
+  padding: 1.25rem 1.3rem;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--r-lg);
+  background: var(--surface-raised);
+  box-shadow: var(--bevel-out);
+}
+
+.result-label {
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking);
+  text-transform: uppercase;
+}
+
+.result-label--spaced {
+  margin-top: 1.3rem;
+}
+
+.result-coords {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0.7rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Each line of the readout gets its own screen. */
+.result-coord {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--r);
+  background-color: var(--lcd-bg);
+  background-image: radial-gradient(var(--lcd-dot) 1px, transparent 1.2px);
+  background-size: 4px 4px;
+  box-shadow: var(--bevel-in);
+}
+
+.result-value {
+  color: var(--lcd-dim);
+  font-family: var(--mono);
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  text-shadow: var(--lcd-glow);
+  word-break: break-word;
+}
+
+.result-coord--ready .result-value {
+  color: var(--lcd-ink);
+}
+
+.result-detail {
+  color: var(--lcd-dim);
+  font-size: 0.74rem;
+  line-height: 1.45;
+}
+
+.result-progress {
+  margin-top: 0.9rem;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.1rem;
+}
+
+/* The formula as it appears in the listing, on a still-blank screen. */
+.result-formula-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.7rem 0 0;
+  padding: 0.75rem 0.85rem;
+  border-radius: var(--r);
+  background-color: var(--lcd-bg);
+  background-image: radial-gradient(var(--lcd-dot) 1px, transparent 1.2px);
+  background-size: 4px 4px;
+  list-style: none;
+  box-shadow: var(--bevel-in);
+}
+
+.result-formula-list li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.formula-prefix {
+  color: var(--lcd-ink);
+  font-weight: 700;
+  text-shadow: var(--lcd-glow);
+}
+
+.formula-body {
+  color: var(--lcd-dim);
+}
+
+@media (max-width: 900px) {
+  .multiply-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .multiply-result {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .step {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step,
+  .step-id {
+    transition: none;
+  }
+}

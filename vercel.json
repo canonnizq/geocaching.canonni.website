@@ -1,0 +1,23 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/series/:slug/:number/image.png",
+      "destination": "/api/serve?slug=:slug&number=:number&format=png"
+    },
+    {
+      "source": "/series/:slug/:number/image.svg",
+      "destination": "/api/serve?slug=:slug&number=:number&format=svg"
+    },
+    {
+      "source": "/api/cache/:code",
+      "destination": "/api/serve?code=:code"
+    },
+    {
+      "source": "/tools/multiply/:code",
+      "destination": "/index.html"
+    }
+  ]
+}

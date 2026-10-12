@@ -1,0 +1,33 @@
+{
+  "name": "geocaching.canonni.website",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -b && npm run build:function && vite build && npm run prerender",
+    "build:function": "node scripts/build-function.mjs",
+    "dev": "vite",
+    "lint": "oxlint",
+    "prerender": "node scripts/prerender-pages.mjs",
+    "preview": "vite preview",
+    "test": "node --test tests/"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "cheerio": "^1.2.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "esbuild": "^0.27.0",
+    "oxlint": "^1.81.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0",
+    "vite-plugin-svgr": "^5.2.0"
+  }
+}

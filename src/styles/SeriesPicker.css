@@ -1,0 +1,64 @@
+.series-picker {
+  margin: 0 0 1.75rem;
+}
+
+.series-picker ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Series select keys. */
+.series-picker-option {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--r);
+  background: var(--surface-raised);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: var(--bevel-out);
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.06s ease,
+    box-shadow 0.06s ease;
+}
+
+.series-picker-option:hover {
+  color: var(--text);
+}
+
+.series-picker-option:active {
+  transform: translateY(3px);
+  box-shadow: inset 1px 1px 0 var(--bevel-lo);
+}
+
+/* NavLink marks the series currently being viewed: the lit key. */
+.series-picker-option[aria-current='page'] {
+  background-color: var(--lcd-bg);
+  background-image: radial-gradient(var(--lcd-dot) 1px, transparent 1.2px);
+  background-size: 4px 4px;
+  color: var(--lcd-ink);
+  text-shadow: var(--lcd-glow);
+  box-shadow: var(--bevel-in);
+}
+
+.series-picker-option:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .series-picker-option {
+    transition: none;
+  }
+}

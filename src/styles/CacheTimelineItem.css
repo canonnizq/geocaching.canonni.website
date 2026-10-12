@@ -1,0 +1,326 @@
+/* Cache card: a raised panel bolted to the face plate. */
+.timeline-card {
+  padding: 1.25rem 1.4rem;
+  border: 2px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface-raised);
+  box-shadow: var(--bevel-out);
+  transition: border-color 0.2s ease;
+}
+
+.timeline-card:hover {
+  border-color: var(--border-strong);
+}
+
+.cache-position {
+  margin: 0 0 0.5rem;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking);
+  text-transform: uppercase;
+}
+
+.cache-title {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1.25;
+}
+
+.cache-identifiers {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.7rem;
+}
+
+/* The code reads out of its own little LCD window. */
+.cache-code {
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--r-sm);
+  background-color: var(--lcd-bg);
+  background-image: radial-gradient(var(--lcd-dot) 1px, transparent 1.2px);
+  background-size: 4px 4px;
+  color: var(--lcd-ink);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-shadow: var(--lcd-glow);
+  box-shadow: var(--bevel-in);
+}
+
+.cache-link {
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.cache-link:hover {
+  color: var(--text);
+  border-bottom-color: currentColor;
+}
+
+/* Metadata chips */
+.cache-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cache-meta-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
+}
+
+.cache-meta-value {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Description */
+.cache-description {
+  margin: 1rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.94rem;
+  line-height: 1.65;
+  white-space: pre-line;
+}
+
+.cache-description--clamped {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  overflow: hidden;
+}
+
+.cache-description-toggle {
+  margin-top: 0.6rem;
+  padding: 0.35rem 0.7rem;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: var(--bevel-out);
+  transition:
+    color 0.18s ease,
+    transform 0.06s ease,
+    box-shadow 0.06s ease;
+}
+
+.cache-description-toggle:hover {
+  color: var(--accent);
+}
+
+.cache-description-toggle:active {
+  transform: translateY(3px);
+  box-shadow: inset 1px 1px 0 var(--bevel-lo);
+}
+
+.cache-note {
+  margin: 0.9rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.84rem;
+  font-style: italic;
+}
+
+/* Hint (spoiler, collapsed by default) */
+.cache-hint {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 2px solid var(--border);
+}
+
+.cache-hint summary {
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.cache-hint summary:hover {
+  color: var(--text);
+}
+
+.cache-hint p {
+  margin: 0.7rem 0 0;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--r);
+  background-color: var(--lcd-bg);
+  background-image: radial-gradient(var(--lcd-dot) 1px, transparent 1.2px);
+  background-size: 4px 4px;
+  color: var(--lcd-ink);
+  font-family: var(--mono);
+  font-size: 0.84rem;
+  line-height: 1.6;
+  text-shadow: var(--lcd-glow);
+  white-space: pre-line;
+  box-shadow: var(--bevel-in);
+}
+
+/* Fallback state */
+.timeline-card--failed {
+  border-style: dashed;
+}
+
+.cache-failure {
+  margin: 0.6rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.cache-failure-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 0.9rem;
+}
+
+.cache-retry {
+  padding: 0.45rem 0.9rem;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: var(--bevel-out);
+  transition:
+    background-color 0.18s ease,
+    transform 0.06s ease,
+    box-shadow 0.06s ease;
+}
+
+.cache-retry:hover {
+  background: var(--surface-raised);
+  color: var(--accent);
+}
+
+.cache-retry:active {
+  transform: translateY(3px);
+  box-shadow: inset 1px 1px 0 var(--bevel-lo);
+}
+
+/* Loading state: blank LCD cells waiting for a readout. */
+.timeline-card--loading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-sm);
+  background-color: color-mix(in srgb, var(--lcd-bg) 60%, var(--surface-raised));
+  background-image: radial-gradient(var(--lcd-dot) 1px, transparent 1.2px);
+  background-size: 4px 4px;
+  box-shadow: var(--bevel-in);
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--lcd-ink) 12%, transparent),
+    transparent
+  );
+  animation: skeleton-sweep 1.4s infinite;
+}
+
+.skeleton--title {
+  width: min(15rem, 70%);
+  height: 1.25rem;
+}
+
+.skeleton--meta {
+  width: min(24rem, 100%);
+  height: 1.9rem;
+}
+
+.skeleton--line {
+  width: 100%;
+  height: 0.8rem;
+}
+
+.skeleton--short {
+  width: 55%;
+}
+
+@keyframes skeleton-sweep {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (max-width: 640px) {
+  .timeline-card {
+    padding: 1rem 1.05rem;
+  }
+
+  .cache-title {
+    font-size: 1.12rem;
+  }
+
+  .cache-description {
+    font-size: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-card,
+  .cache-link,
+  .cache-retry,
+  .cache-description-toggle {
+    transition: none;
+  }
+
+  .skeleton::after {
+    animation: none;
+  }
+}

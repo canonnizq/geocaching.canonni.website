@@ -1,0 +1,409 @@
+/* Floating header: the unit's control strip, detached from the viewport top and
+   held off the face plate by a hard moulded shadow. */
+.hdr {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  box-sizing: border-box;
+  width: min(1126px, calc(100% - 2rem));
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  min-height: 58px;
+  padding: 0.5rem 1.6rem;
+
+  border: 2px solid var(--border-strong);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-floating);
+}
+
+/* Case screws, one at each end of the strip. */
+.hdr::before,
+.hdr::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 11px;
+  height: 11px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background-color: var(--surface-raised);
+  /* Slot head. */
+  background-image: linear-gradient(
+    90deg,
+    transparent 42%,
+    var(--bevel-lo) 42%,
+    var(--bevel-lo) 58%,
+    transparent 58%
+  );
+  box-shadow:
+    0 0 0 1px var(--border),
+    inset 1px 1px 1px var(--bevel-hi),
+    inset -1px -1px 1px var(--bevel-lo);
+}
+
+.hdr::before {
+  left: 11px;
+}
+
+.hdr::after {
+  right: 11px;
+}
+
+/* Brand */
+.hdr-brand {
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.hdr-brand-logo {
+  height: 16px;
+  width: auto;
+}
+
+.hdr-brand-name {
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+/* Center subpage links, as silkscreened keys. */
+.hdr-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hdr-nav a {
+  display: block;
+  padding: 0.45rem 0.8rem;
+  border-radius: var(--r);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.hdr-nav a:hover {
+  color: var(--text);
+  background: var(--accent-soft);
+}
+
+/* NavLink marks the current route with aria-current="page": a lit LCD segment. */
+.hdr-nav a[aria-current='page'] {
+  background-color: var(--lcd-bg);
+  background-image: radial-gradient(var(--lcd-dot) 1px, transparent 1.2px);
+  background-size: 4px 4px;
+  color: var(--lcd-ink);
+  text-shadow: var(--lcd-glow);
+  box-shadow: var(--bevel-in);
+}
+
+/* Right-hand actions */
+.hdr-actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.hdr-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: var(--r);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.hdr-icon-btn:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-raised);
+  color: var(--text);
+  box-shadow: var(--bevel-out);
+}
+
+.hdr-icon-btn[aria-expanded='true'] {
+  border-color: var(--border-strong);
+  background: var(--lcd-bg);
+  color: var(--lcd-ink);
+  box-shadow: var(--bevel-in);
+}
+
+.hdr-icon-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.hdr-brand:focus-visible,
+.hdr-nav a:focus-visible,
+.hdr-icon-btn:focus-visible,
+.hdr-menu-btn:focus-visible,
+.hdr-menu-item:focus-visible,
+.hdr-theme-option input:focus-visible + span {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Settings popover */
+.hdr-settings {
+  position: relative;
+  display: flex;
+}
+
+.hdr-menu {
+  position: absolute;
+  top: calc(100% + 0.9rem);
+  right: 0;
+  min-width: 15rem;
+  padding: 0.7rem;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--r-lg);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-floating);
+  text-align: left;
+  animation: hdr-menu-in 0.14s ease-out;
+}
+
+.hdr-menu-label {
+  margin: 0.15rem 0.35rem 0.5rem;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking);
+  text-transform: uppercase;
+}
+
+/* Theme switch: native radios so keyboard and screen reader behaviour is free.
+   Three keys in a recessed well; the selected one lights up. */
+.hdr-theme-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.2rem;
+  padding: 0.2rem;
+  border-radius: var(--r);
+  background: var(--surface);
+  box-shadow: var(--bevel-in);
+}
+
+.hdr-theme-option {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+/* Transparent rather than hidden so it stays focusable and arrow-key navigable. */
+.hdr-theme-option input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.hdr-theme-option span {
+  display: block;
+  padding: 0.42rem 0.3rem;
+  border-radius: var(--r-sm);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.hdr-theme-option:hover span {
+  color: var(--text);
+}
+
+.hdr-theme-option input:checked + span {
+  background-color: var(--lcd-bg);
+  background-image: radial-gradient(var(--lcd-dot) 1px, transparent 1.2px);
+  background-size: 4px 4px;
+  color: var(--lcd-ink);
+  text-shadow: var(--lcd-glow);
+  box-shadow: var(--bevel-in);
+}
+
+.hdr-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hdr-menu-item {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  border: none;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+.hdr-menu-item:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.hdr-menu-note {
+  margin: 0.5rem 0.35rem 0.15rem;
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  opacity: 0.75;
+}
+
+@keyframes hdr-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile nav toggle */
+.hdr-menu-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 36px;
+  height: 36px;
+  padding: 10px;
+  border: 2px solid transparent;
+  border-radius: var(--r);
+  background: transparent;
+  cursor: pointer;
+}
+
+.hdr-bar {
+  width: 100%;
+  height: 2px;
+  background: var(--text-muted);
+  transition:
+    transform 0.25s ease,
+    opacity 0.2s ease;
+}
+
+.hdr-menu-btn:hover .hdr-bar {
+  background: var(--text);
+}
+
+.hdr-menu-btn[aria-expanded='true'] .hdr-bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hdr-menu-btn[aria-expanded='true'] .hdr-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hdr-menu-btn[aria-expanded='true'] .hdr-bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  /* Not enough width for the case screws to sit clear of the controls. */
+  .hdr::before,
+  .hdr::after {
+    display: none;
+  }
+
+  .hdr {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    top: 0.75rem;
+    width: calc(100% - 1.5rem);
+    padding: 0.45rem 0.6rem;
+  }
+
+  .hdr-menu-btn {
+    display: flex;
+  }
+
+  .hdr-nav {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    border: 2px solid var(--border-strong);
+    border-radius: var(--r-lg);
+    background: var(--surface-raised);
+    box-shadow: var(--shadow-floating);
+  }
+
+  .hdr-nav.is-open {
+    display: block;
+  }
+
+  .hdr-nav ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.2rem;
+  }
+
+  .hdr-nav a {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hdr-brand-name {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hdr,
+  .hdr * {
+    animation: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="https://davidar.github.io/linja-pona/stylesheet.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geocaching by CanonNi</title>
+    <script>
+      // Applies the stored theme before first paint so the page never flashes the
+      // wrong colours. Mirrors the resolution logic in src/hooks/useTheme.ts.
+      (function () {
+        var preference = 'system';
+        try {
+          var stored = window.localStorage.getItem('theme');
+          if (stored === 'light' || stored === 'dark' || stored === 'system') preference = stored;
+        } catch (error) {
+          /* storage unavailable; stay on system */
+        }
+        var resolved =
+          preference === 'system'
+            ? window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light'
+            : preference;
+        document.documentElement.dataset.theme = resolved;
+        document.documentElement.dataset.themePreference = preference;
+      })();
+    </script>
+    <script>
+      // Restores the route stashed by 404.html after a deep link on GitHub Pages.
+      (function () {
+        var location = window.location;
+        if (location.search[1] !== '/') return;
+        var decoded = location.search
+          .slice(1)
+          .split('&')
+          .map(function (part) {
+            return part.replace(/~and~/g, '&');
+          })
+          .join('?');
+        window.history.replaceState(null, '', location.pathname.slice(0, -1) + decoded + location.hash);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
